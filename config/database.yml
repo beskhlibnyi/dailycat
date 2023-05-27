@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  user: <%= Rails.application.credentials.postgres.username %>
+  password: <%= Rails.application.credentials.postgres.password %>
+  host: localhost
+
+development:
+  <<: *default
+  database: daily_cat_development
+  
+test:
+  <<: *default
+  database: daily_cat_test
+
+production:
+  <<: *default
+  database: daily_cat_production
